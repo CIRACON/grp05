@@ -4,6 +4,7 @@ import { Homepage } from './components/Homepage/Homepage';
 import { Films } from './components/Films/Films';
 import { Planets } from './components/Planets/Planets';
 import './App.css';
+
 import {
   BrowserRouter as Router,
   Route,
@@ -21,6 +22,7 @@ function App() {
         </Routes>
       </>
     </Router>
+
   );
 }
 
