@@ -4,15 +4,23 @@ import { Homepage } from './components/Homepage/Homepage';
 import { Films } from './components/Films/Films';
 import { Planets } from './components/Planets/Planets';
 import './App.css';
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes,
+} from 'react-router-dom';
 
 function App() {
   return (
-    <>
-    <h1>Star Wars Universe Lookup</h1>
-    <Homepage/>
-    <Films/>
-    <Planets/>
-    </>
+    <Router>
+      <>
+        <Routes>
+          <Route  path='/' element={<Homepage />} />
+          <Route  path='/Planets' element={<Planets />} />
+          <Route  path='/Films' element={<Films />} />
+        </Routes>
+      </>
+    </Router>
   );
 }
 
