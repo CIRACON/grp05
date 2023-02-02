@@ -4,6 +4,7 @@ import { Homepage } from './components/Homepage/Homepage';
 import { Films } from './components/Films/Films';
 import { Planets } from './components/Planets/Planets';
 import './App.css';
+import { PersonInfo } from './components/People/PersonInfo';
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
     <Homepage/>
     <Films/>
     <Planets/>
+    <PersonInfo id={1}/>
     </>
   );
 }
