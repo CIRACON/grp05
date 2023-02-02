@@ -1,16 +1,16 @@
 import React from 'react'
-import { useEffect, useState } from 'react'
-import { fetchAllPeople } from '../../Fetch'
+import { Person } from './Person'
+import { Searchbar } from './Searchbar'
+import { useState } from 'react'
+
 
 export const Homepage = () => {
+  const [search, setSearch] = useState("");
 
-  useEffect(() => {
-    fetchAllPeople().then(res => console.log(res))
-  }, [])
-    
   return (
     <>
-    <div>Homepage</div>
+      <Searchbar setSearch={setSearch} />
+      <Person search={search} />
     </>
   )
 }
