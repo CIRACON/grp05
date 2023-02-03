@@ -1,17 +1,28 @@
 import React from 'react'
 import { useEffect, useState } from 'react'
-import { fetchPerson, fetchPlanet } from '../../Fetch'
+import { useParams } from 'react-router-dom'
+import { fetchFilm, fetchPerson, fetchPlanet, getIdFrom } from '../../Fetch'
 
-export const PersonInfo = ({id}) => {
+export const PersonInfo = () => {
   const [person, setPerson] = useState({})
   const [planet, setPlanet] = useState({})
-  const [films, setFilms] = useState({})
+  const [films, setFilms] = useState([])
+  const {id} = useParams()
     
   useEffect(() => {
-    fetchPerson(id).then(res => {
-      setPerson(res)
-      console.log(res)
-    })
+    fetchPerson(id)
+    .then(res => {setPerson(res)})
+    .then(() => {
+        console.log(person)
+        
+        fetchPlanet(getIdFrom('planets', person.homeworld))
+          .then(res => setPlanet(res))
+
+        person.films.forEach(film => {
+          fetchFilm(getIdFrom('films', film).then(res => setFilms(films.push(res))))
+        })
+      }
+    )
 
   }, [])
 
@@ -27,12 +38,12 @@ export const PersonInfo = ({id}) => {
       </div>
       <div>
         <h2>Homeworld</h2>
-        <p>{person.homeworld}</p>
+        <p>{planet.name}</p>
       </div>
       <div>
         <h2>Films</h2>
         <ul>
-          {person.films.map(film => <li>{film}</li>)}
+          {films.map(film => <li>{film.title}</li>)}
         </ul>
       </div>
     </>

@@ -10,6 +10,7 @@ import {
   Route,
   Routes,
 } from 'react-router-dom';
+import { PersonInfo } from './components/People/PersonInfo';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
       <>
         <Routes>
           <Route  path='/' element={<Homepage />} />
+          <Route  path='/PersonInfo/:id' element={<PersonInfo />} />
           <Route  path='/Planets' element={<Planets />} />
           <Route  path='/Films' element={<Films />} />
         </Routes>
