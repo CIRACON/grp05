@@ -1,12 +1,12 @@
 import React from 'react'
 import { useEffect, useState } from 'react'
-import { fetchAllPeople } from '../../Fetch'
+import { fetchAll } from '../../Fetch'
 
 export const Person = ({search}) => {
   const [people, setPeople] = useState([])
 
   useEffect(() => {
-    fetchAllPeople().then(res => {
+    fetchAll("people").then(res => {
       setPeople(res)
       console.log(res)
     })

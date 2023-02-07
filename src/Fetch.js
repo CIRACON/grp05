@@ -1,59 +1,25 @@
-export async function fetchPerson(id) {
-    let url = `https://swapi.dev/api/people/${id}`;
+export async function fetchById(type, id) {
+    let url = `http://localhost/getById/${type}/${id}`;
 
     try {
         return await fetch(url)
-        .then(res => res.json())
-        .then(res => res = {...res, id: + getIdFrom('people', res.url)});
+            .then(res => res.json())
+            .then(res => res = ({...res.fields, id: res._id}))
     } catch (ex) {
-        console.error(`Error reading person ${id} data.`, ex.message);
+        console.error(`Error reading {${type}: ${id}}'s data.`, ex.message);
     }
 }
 
-export async function fetchAllPeople() {
+export async function fetchAll(type) {
 
-    let people = [];
-
-    let url = `https://swapi.dev/api/people/`;
-
-    while (url) {
-        try {
-            const fetchPeople = await fetch(url)
-                .then(res => res.json())
-                .then(res => { url = res.next; return res })
-                .then(res => res.results)
-                .then(res => res.map(p => ({ ...p, id: + getIdFrom('people', p.url) })))
-
-            people.push(...fetchPeople)
-        } catch (ex) {
-            console.error(`Error reading people.`, ex.message);
-        }
-   }
-
-    return people;
-}
-
-export async function fetchFilm(id) {
-    let url = `https://swapi.dev/api/films/${id}`;
+    let url = `http://localhost:4000/getAll/${type}`;
 
     try {
         return await fetch(url)
-        .then(res => res.json())
-        .then(res => res = {...res, id: + getIdFrom('films', res.url)});
+            .then(res => res.json())
+            .then(res => res.map(p => ({...p.fields, id: p._id})))
     } catch (ex) {
-        console.error(`Error reading film ${id} data.`, ex.message);
-    }
-}
-
-export async function fetchPlanet(id) {
-    let url = `https://swapi.dev/api/planets/${id}`;
-
-    try {
-        return await fetch(url)
-        .then(res => res.json())
-        .then(res => res = {...res, id: + getIdFrom('planets', res.url)});
-    } catch (ex) {
-        console.error(`Error reading planet ${id} data.`, ex.message);
+        console.error(`Error reading ${type}.`, ex.message);
     }
 }
 

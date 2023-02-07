@@ -1,7 +1,7 @@
 import React from 'react'
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import { fetchFilm, fetchPerson, fetchPlanet, getIdFrom } from '../../Fetch'
+import { fetchById, getIdFrom } from '../../Fetch'
 import '../components.css'
 
 export const PersonInfo = () => {
@@ -11,7 +11,7 @@ export const PersonInfo = () => {
   const {id} = useParams()
     
   useEffect(() => {
-    fetchPerson(id)
+    fetchById('people', id)
     .then(res => {setPerson(res)})
   }, [])
 
@@ -19,12 +19,12 @@ export const PersonInfo = () => {
     if (Object.keys(person).length == 0)
       return 
         
-    fetchPlanet(getIdFrom('planets', person.homeworld))
+    fetchById('planets', getIdFrom('planets', person.homeworld))
       .then(res => setPlanet(res))
 
     console.log(planet)
     person.films.forEach(film => {
-      fetchFilm(getIdFrom('films', film)).then(res => {
+      fetchById('films', getIdFrom('films', film)).then(res => {
         let check = 0;
         films.forEach(film => {
           if (film.title === res.title)

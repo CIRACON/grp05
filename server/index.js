@@ -1,37 +1,18 @@
 var express = require('express');
 var dao = require("./mongo-dao");
+const cors = require('cors');
 var app = express();
 
 app.use(express.json());
 
-app.get("/", (req, res) => {
-    dao.call('getAllCharacters', {}, (result) => {
-        console.log("result: " + result.status)
-        res.send("null?");
-    })
-})
+app.use(cors({
+    origin: 'http://localhost:3000'
+}));
 
-// GET Character:ID
-app.get("/PersonInfo/:id", (req, res) => {
-    dao.call('getSpecificPerson', {}, (result) => {
-        console.log("result: " + result.status)
-        res.statusCode;
-    })
-})
-// GET Films:ID
-app.get("/Films/:id", (req, res) => {
-    dao.call('getAllCharacters', {}, (result) => {
-        console.log("result: " + result.status)
-        res.statusCode;
-    })
-})
+app.get("/getAll/:type", (req, res) => dao.getAll(req.params.type, (data) => {res.send(data);}))
 
-// GET Planets:ID
-app.get("/", (req, res) => {
-    dao.call('getAllCharacters', {}, (result) => {
-        console.log("result: " + result.status)
-        res.statusCode
-    })
+app.get("/getById/:type/:id", (req, res) => {
+    dao.getById(req.params.type, req.params.id, (data) => {res.send(data);})
 })
 
 // server start-up

@@ -1,6 +1,6 @@
 const mongodb = require("mongodb");                  
 const url = "mongodb://localhost:27017";
-let dbPool;
+let dbPool, collection;
 
 mongodb.MongoClient.connect(url, function(err, client) {
     if (!err) {
@@ -11,28 +11,10 @@ mongodb.MongoClient.connect(url, function(err, client) {
     }
 });
 
-module.exports.call = function call(operation, parameters, callback) {
-    switch (operation.toLowerCase()) {
-        case 'getAllCharacters':
-            console.log('Get all characters');
-            callback("test", '')
-            break;
-        case 'getFilmByID':
-            console.log('getFilmByID');
-            callback("test", '')
-            break;
-        case 'getCharacterByID':
-            console.log('getCharacterByID');
-            break;
-        case 'getSpeciesByID':
-            console.log('getSpeciesByID');
-            break;
-        case 'getPlanetByID':
-            console.log('getPlanetByID');
-            break;
-    }
-
-    console.log( 'call complete: ' + operation );
-    return 'call complete';
+module.exports.getAll = (type, callback) => {
+  (dbPool.collection(type)).find().toArray((err, data) => callback(data))
 }
 
+module.exports.getById = (type, id, callback) => {
+  (dbPool.collection(type)).find({"_id": mongodb.ObjectId(id)}).toArray((err, data) => callback(data))
+}
