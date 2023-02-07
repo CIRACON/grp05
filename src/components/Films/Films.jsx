@@ -16,7 +16,7 @@ export const Films = () => {
   }, [])
 
   useEffect(() => {
-    if (Object.keys(film).length == 0)
+    if (Object.keys(film).length === 0)
       return 
         
       film.characters.forEach(person => {

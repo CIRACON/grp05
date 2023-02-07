@@ -58,7 +58,7 @@ export async function fetchPlanet(id) {
 }
 
 export function getIdFrom(entityName, url) {
-    const re = new RegExp(`.*${entityName}\/(\\d+).*`);
+    const re = new RegExp(`.*${entityName}(\\d+).*`);
     const matches = url.match(re)
     if (!matches) throw `Bad URL. Not a ${entityName} URL.`
     return matches[1]
