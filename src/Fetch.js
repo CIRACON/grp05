@@ -2,7 +2,9 @@ export async function fetchPerson(id) {
     let url = `https://swapi.dev/api/people/${id}`;
 
     try {
-        return await fetch(url).then(res => res.json());
+        return await fetch(url)
+        .then(res => res.json())
+        .then(res => res = {...res, id: + getIdFrom('people', res.url)});
     } catch (ex) {
         console.error(`Error reading person ${id} data.`, ex.message);
     }
@@ -35,7 +37,9 @@ export async function fetchFilm(id) {
     let url = `https://swapi.dev/api/films/${id}`;
 
     try {
-        return await fetch(url).then(res => res.json());
+        return await fetch(url)
+        .then(res => res.json())
+        .then(res => res = {...res, id: + getIdFrom('films', res.url)});
     } catch (ex) {
         console.error(`Error reading film ${id} data.`, ex.message);
     }
@@ -45,7 +49,9 @@ export async function fetchPlanet(id) {
     let url = `https://swapi.dev/api/planets/${id}`;
 
     try {
-        return await fetch(url).then(res => res.json());
+        return await fetch(url)
+        .then(res => res.json())
+        .then(res => res = {...res, id: + getIdFrom('planets', res.url)});
     } catch (ex) {
         console.error(`Error reading planet ${id} data.`, ex.message);
     }

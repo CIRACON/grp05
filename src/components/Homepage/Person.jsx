@@ -19,7 +19,14 @@ export const Person = ({search}) => {
           people
           .filter(person => {
             return search ? person.name.includes(search) : true
-          }).map(filteredPerson => <div style={peopleDivStyle}>{filteredPerson.name}</div>)
+          })
+          .map(filteredPerson => 
+          <div 
+            style={peopleDivStyle} 
+            onClick={() => {window.location = `/PersonInfo/${filteredPerson.id}`}}
+          >
+            {filteredPerson.name}
+          </div>)
         }
       </div>
     </>
