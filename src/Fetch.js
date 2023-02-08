@@ -25,6 +25,7 @@ export async function isAuthenticated(username, password) {
     try {
         let fetchedData = await fetch(url, fetchOptions)
             .then(res => res.json)
+            console.log(fetchedData.status === 200)
         return fetchedData.status === 200;
     } catch (ex) {
         console.error(`Error authenticating: ${ex.message}`)

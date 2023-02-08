@@ -13,10 +13,14 @@ export const Credentials = () => {
 
     const handleCredentials = () => {
             
+        console.log(isAuthenticated(username, password))
+
             if (isAuthenticated(username, password)) {
                 navigate("/Home");
+           
             } else {
                 // throw error to user
+                navigate("/");
             }
         }
     
