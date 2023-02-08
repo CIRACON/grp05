@@ -1,5 +1,4 @@
 import  {React, useState } from "react";
-import { setUsername, setPassword } from './LoginPage'
 
 export const Credentials = () => {
 
