@@ -50,7 +50,7 @@ module.exports.login = async (username, password, callback) => {
   callback(
     await dbPool
       .collection("credentials")
-      .countDocuments({ 'username': username, 'password': password })
+      .countDocuments({ 'username': username, 'password': password }) === 1 ? 200 : 401
   )
 }
 

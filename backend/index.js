@@ -19,7 +19,7 @@ app.post("/filterEmployees", (req, res) => {
 
 app.post("/login", (req, res) => {
     let credentials = req.body
-    dao.login(credentials.username, credentials.password, (data) => {res.send(data)})
+    dao.login(credentials.username, credentials.password, (data) => {res.sendStatus(data)})
 })
 
 const port = 4000
