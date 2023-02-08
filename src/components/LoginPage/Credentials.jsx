@@ -15,6 +15,9 @@ export const Credentials = () => {
         console.log(username);
         console.log(password);
         // Logic here that checks if user is in DB. If yes, navigate home.
+        // api endpoint returns true false if true let thm move on
+
+        // ex of this in Fetch.js and useEffect of any jsx file.
         navigate("/Home")
     }
 
