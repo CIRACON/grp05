@@ -10,7 +10,7 @@ export const Credentials = () => {
 
     const navigate = useNavigate();
 
-    const seeCredentials = () => {
+    const handleCredentials = () => {
 
         console.log(username);
         console.log(password);
@@ -42,7 +42,7 @@ export const Credentials = () => {
 
             If yes, move to welcome page.
             If no, prompt warning. */}
-            <Button variant="contained" onClick={seeCredentials}>Submit</Button>
+            <Button variant="contained" onClick={handleCredentials}>Submit</Button>
 
         </>
     )
