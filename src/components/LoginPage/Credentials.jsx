@@ -2,6 +2,7 @@ import { Input, TextField, } from "@mui/material";
 import Button from '@mui/material/Button';
 import { React, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { isAuthenticated } from "../../Fetch";
 
 export const Credentials = () => {
 
@@ -11,12 +12,14 @@ export const Credentials = () => {
     const navigate = useNavigate();
 
     const handleCredentials = () => {
-
-        console.log(username);
-        console.log(password);
-        // Logic here that checks if user is in DB. If yes, navigate home.
-        navigate("/Home")
-    }
+            
+            if (isAuthenticated(username, password)) {
+                navigate("/Home");
+            } else {
+                // throw error to user
+            }
+        }
+    
 
     return (
         <>
