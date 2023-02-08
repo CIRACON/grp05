@@ -16,27 +16,27 @@ export const PersonInfo = () => {
   }, [])
 
   useEffect(() => {
-    if (Object.keys(person).length == 0)
+    if (!person || Object.keys(person).length == 0)
       return 
         
-    fetchById('planets', getIdFrom('planets', person.homeworld))
+    fetchById('planets', person.homeworld)
       .then(res => setPlanet(res))
 
     console.log(planet)
-    person.films.forEach(film => {
-      fetchById('films', getIdFrom('films', film)).then(res => {
-        let check = 0;
-        films.forEach(film => {
-          if (film.title === res.title)
-            check = 1
-        })
+    // person.films.forEach(film => {   No films in db info
+    //   fetchById('films', getIdFrom('films', film)).then(res => {
+    //     let check = 0;
+    //     films.forEach(film => {
+    //       if (film.title === res.title)
+    //         check = 1
+    //     })
         
-        if (!check)
-          setFilms(oldFilmList => [...oldFilmList, res])
-      })
-    })
+    //     if (!check)
+    //       setFilms(oldFilmList => [...oldFilmList, res])
+    //   })
+    // })
 
-    console.log(films)
+    // console.log(films)
   }, [person])
 
   return (

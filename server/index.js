@@ -3,11 +3,8 @@ var dao = require("./mongo-dao");
 const cors = require('cors');
 var app = express();
 
+app.use(cors());
 app.use(express.json());
-
-app.use(cors({
-    origin: 'http://localhost:3000'
-}));
 
 app.get("/getAll/:type", (req, res) => dao.getAll(req.params.type, (data) => {res.send(data);}))
 

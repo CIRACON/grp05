@@ -1,10 +1,10 @@
 export async function fetchById(type, id) {
-    let url = `http://localhost/getById/${type}/${id}`;
+    let url = `http://localhost:4000/getById/${type}/${id}`;
 
     try {
         return await fetch(url)
             .then(res => res.json())
-            .then(res => res = ({...res.fields, id: res._id}))
+            .then(res => res = {...res.fields, id: res._id})
     } catch (ex) {
         console.error(`Error reading {${type}: ${id}}'s data.`, ex.message);
     }
