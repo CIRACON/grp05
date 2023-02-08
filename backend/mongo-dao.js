@@ -16,9 +16,11 @@ mongodb.MongoClient.connect(url, function (err, client) {
 });
 
 const applyDBData = () => {
-  if (!dbPool.listCollections()) {
+  try {
     dbPool.collection('employees').drop()
     dbPool.collection('credentials').drop()
+  } catch (ex) {
+    //Do nothing, collections do not exist
   }
 
   for (let i = 0; i < 100; i++) {
@@ -42,4 +44,12 @@ const applyDBData = () => {
       }
     )
   }
+}
+
+module.exports.login = async (username, password, callback) => {
+  callback(
+    await dbPool
+      .collection("credentials")
+      .countDocuments({ 'username': username, 'password': password }) === 1
+  )
 }
