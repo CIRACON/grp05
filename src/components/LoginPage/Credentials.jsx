@@ -4,7 +4,6 @@ import { React, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { isAuthenticated } from "../../Fetch";
 import login_gradient from "./login-gradient.jpg"
-import login_image from "./login-image.png"
 
 export const Credentials = () => {
 
@@ -22,12 +21,16 @@ export const Credentials = () => {
     return (
         <>
             <div className="flex">
-                <div className="h-screen w-1/2">
+                <div className="h-screen w-3/5">
                     <img className="object-fill h-full w-full" src={login_gradient} alt="gradient" />
                 </div>
 
-                <div className="h-screen w-1/2 bg-white grid place-items-center">
-                    <div className="h-1/2 w-1/2">
+                <div className="h-screen w-2/5 bg-white grid place-items-center">
+                    <div className="h-1/2 w-full grid place-items-center">
+                        <div className="font-mono text-lg font-medium">
+                            Log in
+                        </div>
+
                         <div>
                             <TextField
                                 id="outline-basic"
