@@ -39,14 +39,14 @@ export const Home = () => {
     <>
 
       {/* Search inputs */}
-      <div className='searchArea'>
+      <div className='w-40 grid gap-4 grid-cols-1 grid-rows-5 ml-10'>
         <p>Search Area</p>
-        <TextField
-          id="standard-basc"
-          label="Name"
-          variant="standard"
-          onChange={event => setName(event.target.value)}
-        />
+          <TextField
+            id="standard-basc"
+            label="Name"
+            variant="standard"
+            onChange={event => setName(event.target.value)}
+          />
         <TextField
           id="standard-basc"
           label="Phone Number"
@@ -62,7 +62,6 @@ export const Home = () => {
           label="Work Location"
           variant="standard"
           onChange={event => setWorkLocation(event.target.value)} />
-        {/* <TextField id="standard-basc" label="Division" variant="standard" /> */}
         <FormControl sx={{ m: 1, minWidth: 150 }}>
           <InputLabel id="demo-simple-select-label">Division</InputLabel>
           <Select
