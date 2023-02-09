@@ -31,22 +31,24 @@ export const Home = () => {
     )
   }
 
+
+
   useEffect(() => {
-    console.log('useEffect on Homepage')
   })
 
   return (
     <>
 
       {/* Search inputs */}
-      <div className='w-40 grid gap-4 grid-cols-1 grid-rows-5 ml-10'>
-        <p>Search Area</p>
-          <TextField
-            id="standard-basc"
-            label="Name"
-            variant="standard"
-            onChange={event => setName(event.target.value)}
-          />
+
+      <div className='mt-10 w-40 grid gap-4 grid-cols-1 grid-rows-5 ml-[45px]'>
+
+        <TextField
+          id="standard-basc"
+          label="Name"
+          variant="standard"
+          onChange={event => setName(event.target.value)}
+        />
         <TextField
           id="standard-basc"
           label="Phone Number"
@@ -89,9 +91,12 @@ export const Home = () => {
           </Select>
         </FormControl>
         <Button variant="contained" onClick={handleSubmit}>Submit</Button>
-        {/* <TextField id="standard-basc" label="Department" variant="standard" /> */}
-      </div>
 
+      </div>
+      {/* <TextField id="standard-basc" label="Department" variant="standard" /> */}
+      <div>
+        <p>Map through filtered people here:</p>
+      </div>
     </>
   )
 }
