@@ -5,10 +5,9 @@ export const Header = () => {
 
   const navigate = useNavigate();
 
-  // const handleUmbrella = () => {
-  //   console.log('Navigating to /home')
-  //   navigate("/Home")
-  // }
+  const handleUmbrella = () => {
+    navigate("/Home")
+  }
 
   return (
     <>
@@ -16,7 +15,7 @@ export const Header = () => {
       <img 
       style={{ width: 140, height: 80 }}
         src='https://www.travelers.com/assets/images/Travelers_share.jpg?imformat=generic'
-        
+        onClick={handleUmbrella}
       ></img>
     </>
   )

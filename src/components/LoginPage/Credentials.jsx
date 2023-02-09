@@ -12,18 +12,10 @@ export const Credentials = () => {
     const navigate = useNavigate();
 
     const handleCredentials = () => {
-            
-        console.log(isAuthenticated(username, password))
-
-            if (isAuthenticated(username, password)) {
-                navigate("/Home");
-           
-            } else {
-                // throw error to user
-                navigate("/");
-            }
-        }
-    
+        isAuthenticated(username, password).then(res => {
+            res ? navigate("/Home") : console.log("Authentication Invalid") //Change to user error message
+        })
+    }
 
     return (
         <>
