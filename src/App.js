@@ -6,7 +6,6 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 
 // ** COMPONENT IMPORTS ** //
 import { LoginPage } from './components/LoginPage/LoginPage';
-import { Header } from './components/Header/Header';
 import { Home } from './components/Home/Home';
 import { EmployeeProfile } from './components/EmployeeProfile/EmployeeProfile';
 
@@ -14,7 +13,6 @@ function App() {
   return (
     <Router>
       <>
-      <Header/>
         <Routes>
 
           <Route path='/' element={<LoginPage />} />

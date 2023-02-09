@@ -1,29 +1,21 @@
 import React from 'react'
-import { useNavigate } from "react-router-dom";
 import default_profile_photo from "./default-profile-image.png"
 
 export const Header = () => {
 
-  const navigate = useNavigate();
-
-  const handleUmbrella = () => {
-    navigate("/Home")
-  }
-
-  // <img
-  // style={{ width: 140, height: 80 }}
-  // src='https://www.travelers.com/assets/images/Travelers_share.jpg?imformat=generic'
-  // onClick={handleUmbrella}/>
-
   return (
     <>
       <div className="flex h-24 bg-[#f50101]">
-        <div className="w-2/12 grid place-items-center">Search Bar</div>
-        <div className="w-8/12 text-2xl grid place-items-center">
+        <div className="flex-none w-1/12 border-solid border border-black border-l-0 grid place-items-center">
+          Search Bar
+        </div>
+
+        <div className="shrink w-10/12 border-solid border border-black border-l-0 border-r-0 text-2xl grid place-items-center">
           Searchable Enterprise Directory
         </div>
-        <div className="w-2/12 grid place-items-center">
-          <img src={default_profile_photo} alt="Profile Photo"></img>
+
+        <div className="flex-none w-1/12 border-solid border border-black border-r-0 grid place-items-center">
+          <img className="object-fill w-10/12 h-10/12" src={default_profile_photo} alt="Profile" />
         </div>
       </div>
     </>

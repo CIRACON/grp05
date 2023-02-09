@@ -58,3 +58,21 @@ module.exports.login = async (username, password, callback) => {
 //Passing in the user calling's employee id/name/identification information to find way to redact salary information
 module.exports.filterEmployees = (filter, callback) =>
   (dbPool.collection('employees')).find(filter).toArray((err, data) => callback(data))
+
+module.exports.getAll = (resource, callback) => {
+
+  switch (resource) {
+    case 'worklocations':
+      callback(work_locations)
+      break
+    case 'divisions':
+      callback(divisions)
+      break
+    case 'departments':
+      callback(departments)
+      break
+    default:
+      callback([])
+  }
+
+}

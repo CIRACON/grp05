@@ -14,14 +14,16 @@ app.post("/filterEmployees", (req, res) => {
         (key) => (validKeys.includes(key) && typeof body[key] === "string") || delete body[key]
     );
 
-    dao.filterEmployees(body, (data) => {res.send(data)})
+    dao.filterEmployees(body, (data) => { res.send(data) })
 })
 
 app.post("/login", (req, res) => {
     let credentials = req.body
-    dao.login(credentials.username, credentials.password, (data) => {res.sendStatus(data)})
+    dao.login(credentials.username, credentials.password, (data) => { res.sendStatus(data) })
 })
 
+app.get("/resource/search/getAll/:resource", (req, res) => dao.getAll(req.params.resource, (data) => { res.send(data) }))
+
 const port = 4000
-console.log("Open a browser to http://localhost:"+port+" to view the application");
+console.log("Open a browser to http://localhost:" + port + " to view the application");
 app.listen(port);

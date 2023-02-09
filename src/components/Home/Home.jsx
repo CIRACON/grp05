@@ -7,6 +7,7 @@ import Select, { SelectChangeEvent } from '@mui/material/Select';
 import Button from '@mui/material/Button';
 import { getFilteredEmployees } from '../../Fetch';
 
+import { Header } from '../Header/Header';
 export const Home = () => {
 
   // State Variables for Homepage - This is what we'll send to filter the directory
@@ -120,6 +121,7 @@ export const Home = () => {
 
         </div>
       </div>
+      <Header />
     </>
   )
 }
