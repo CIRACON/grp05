@@ -24,7 +24,10 @@ const applyDBData = () => {
     //Do nothing, collections do not exist
   }
 
-  for (let i = 0; i < 100; i++) {
+  const e_size = 100
+  const ten = e_size / 10
+
+  for (let i = 0; i <= e_size; i++) {
     dbPool.collection("employees").insertOne(
       {
         'name': `employee #${i}`,
@@ -32,7 +35,8 @@ const applyDBData = () => {
         'job_role': 'Software Engineer',
         'work_location': work_locations[Math.floor(Math.random() * work_locations.length)],
         'salary': 1.50,
-        'manager': 'Bob',
+        'manager': i !== e_size ? i < ten ? `employee #${e_size}` : `employee #${i % 10}` : '',
+        'direct_reports': i < ten ? getDirectReports(i * ten, (i + 1) * ten) : i === e_size ? getDirectReports(0, ten) :[],
         'division': divisions[Math.floor(Math.random() * divisions.length)],
         'department': departments[Math.floor(Math.random() * departments.length)] //Make division and department correlated, combine arrays into 2D
       }
@@ -45,6 +49,16 @@ const applyDBData = () => {
       }
     )
   }
+}
+
+const getDirectReports = (start, end) => {
+  let reports = []
+
+  for (let i = start; i < end; i++){
+    reports.push(`employee #${i}`)
+  }
+
+  return reports
 }
 
 module.exports.login = async (username, password, callback) => {
