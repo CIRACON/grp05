@@ -1,5 +1,6 @@
 const { departments } = require("./departments.js")
 const { divisions } = require("./divisions.js")
+const { work_locations } = require("./work_locations")
 const mongodb = require("mongodb");
 const url = "mongodb://localhost:27017";
 let dbPool;
@@ -29,7 +30,7 @@ const applyDBData = () => {
         'name': `employee #${i}`,
         'phone_number': '000-000-0000',
         'job_role': 'Software Engineer',
-        'work_location': 'St. Paul',
+        'work_location': work_locations[Math.floor(Math.random() * work_locations.length)],
         'salary': 1.50,
         'manager': 'Bob',
         'division': divisions[Math.floor(Math.random() * divisions.length)],
@@ -55,5 +56,5 @@ module.exports.login = async (username, password, callback) => {
 }
 
 //Passing in the user calling's employee id/name/identification information to find way to redact salary information
-module.exports.filterEmployees = (filter, callback) => 
+module.exports.filterEmployees = (filter, callback) =>
   (dbPool.collection('employees')).find(filter).toArray((err, data) => callback(data))
