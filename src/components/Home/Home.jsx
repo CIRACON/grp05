@@ -17,11 +17,18 @@ export const Home = () => {
   const [work_location, setWorkLocation] = useState("")
   const [division, setDivision] = useState("")
   const [department, setDepartment] = useState("")
+  const [employees, setEmployees] = useState([])
 
   // Functions
 
-  const handleSubmit = () => getFilteredEmployees(name, phone_number, job_role, work_location, division, department).then(res => console.log(res))
+  // const handleSubmit = () => getFilteredEmployees(name, phone_number, job_role, work_location, division, department).then(res => console.log(res))
 
+  const handleSubmit = () =>
+    getFilteredEmployees(name, phone_number, job_role, work_location, division, department)
+      .then(res => {
+        setEmployees(res)
+        console.log('response:', res)
+      })
 
 
   useEffect(() => {
@@ -90,35 +97,29 @@ export const Home = () => {
 
         <div className='h-screen w-4/5'>
           {/* THIS WILL NEED TO MAP THROUGH EACH FILTERED PERSON CREATE GRID. */}
-          <p className='mt-[50px]'>Map through filtered people here:</p>
-
-          <div className="flex justify-center mt-[25px] mb-[25px]">
-            <div className="flex flex-col md:flex-row md:max-w-xl rounded-lg bg-white shadow-lg">
-              <img className=" w-full h-96 md:h-auto object-cover md:w-48 rounded-t-lg md:rounded-none md:rounded-l-lg" src="https://mdbootstrap.com/wp-content/uploads/2020/06/vertical.jpg" alt="" />
-              <div className="p-6 flex flex-col justify-start">
-                <h5 className="text-gray-900 text-xl font-medium mb-2">Card title</h5>
-                <p className="text-gray-700 text-base mb-4">
-                  This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
-                </p>
-                <p className="text-gray-600 text-xs">Last updated 3 mins ago</p>
+          {employees.map(employee => {
+            return (
+              <div key={employee._id}>
+                <div className='flex justify-center'>
+                  <div className='flex flex-col md:flex-row md:max-w-xl rounded-lg bg-white shadow-lg'>
+                    <div className='p-6 flex flex-col justify-start'>
+                      <h5 className='text-gray-900 text-xl font-medium mb-2'>{employee.name}</h5>
+                      <p className='text-gray-700 text-base mb-4'>{employee.}o</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )
+          })}
+          {/* 
+          <div className='flex justify-center'>
+            <div className='flex flex-col md:flex-row md:max-w-xl rounded-lg bg-white shadow-lg'>
+              <div className='p-6 flex flex-col justify-start'>
+                <h5 className='text-gray-900 text-xl font-medium mb-2'>Employee Name</h5>
+                <p className='text-gray-700 text-base mb-4'>copy this for employee info</p>
               </div>
             </div>
-          </div>
-
-          <div className="flex justify-center">
-            <div className="flex flex-col md:flex-row md:max-w-xl rounded-lg bg-white shadow-lg">
-              <img className=" w-full h-96 md:h-auto object-cover md:w-48 rounded-t-lg md:rounded-none md:rounded-l-lg" src="https://mdbootstrap.com/wp-content/uploads/2020/06/vertical.jpg" alt="" />
-              <div className="p-6 flex flex-col justify-start">
-                <h5 className="text-gray-900 text-xl font-medium mb-2">Card title</h5>
-                <p className="text-gray-700 text-base mb-4">
-                  This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
-                </p>
-                <p className="text-gray-600 text-xs">Last updated 3 mins ago</p>
-              </div>
-            </div>
-          </div>
-
-
+          </div> */}
 
         </div>
       </div>
