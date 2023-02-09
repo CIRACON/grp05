@@ -19,7 +19,6 @@ export const Credentials = () => {
 
     return (
         <>
-            <div>Credentials Component</div>
             <TextField
                 id="outline-basic"
                 label="Username"

@@ -8,7 +8,6 @@ export const LoginPage = () => {
 
     return (
         <>
-            <div>Login Page component</div>
             <Credentials
                 setUsername={setUsername}
                 setPassword={setPassword}
