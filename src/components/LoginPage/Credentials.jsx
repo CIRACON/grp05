@@ -3,6 +3,8 @@ import Button from '@mui/material/Button';
 import { React, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { isAuthenticated } from "../../Fetch";
+import login_gradient from "./login-gradient.jpg"
+import login_image from "./login-image.png"
 
 export const Credentials = () => {
 
@@ -19,29 +21,39 @@ export const Credentials = () => {
 
     return (
         <>
-            <TextField
-                id="outline-basic"
-                label="Username"
-                variant="outlined"
-                type='text'
-                onChange={event => setUsername(event.target.value)}
-            />
+            <div className="flex">
+                <div className="h-screen w-1/2">
+                    <img className="object-fill h-full w-full" src={login_gradient} alt="gradient" />
+                </div>
 
-            <TextField
-                id="outline-basic"
-                label="Password"
-                variant="outlined"
-                type='text'
-                onChange={event => setPassword(event.target.value)}
-            />
+                <div className="h-screen w-1/2 bg-white grid place-items-center">
+                    <div className="h-1/2 w-1/2">
+                        <div>
+                            <TextField
+                                id="outline-basic"
+                                label="Username"
+                                variant="outlined"
+                                type='text'
+                                onChange={event => setUsername(event.target.value)}
+                            />
+                        </div>
 
-            {/* On submit this should send the username & password to the DB and check to see if there is a username
-            Matching those credentials.
+                        <div>
+                            <TextField
+                                id="outline-basic"
+                                label="Password"
+                                variant="outlined"
+                                type='text'
+                                onChange={event => setPassword(event.target.value)}
+                            />
+                        </div>
 
-            If yes, move to welcome page.
-            If no, prompt warning. */}
-            <Button variant="contained" onClick={handleCredentials}>Submit</Button>
-
+                        <div>
+                            <Button variant="contained" onClick={handleCredentials}>Submit</Button>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </>
     )
 }
