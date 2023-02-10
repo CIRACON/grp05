@@ -30,13 +30,14 @@ const applyDBData = () => {
   for (let i = 0; i <= e_size; i++) {
     dbPool.collection("employees").insertOne(
       {
+        'id': `${i}`,
         'name': `employee #${i}`,
         'phone_number': '000-000-0000',
         'job_role': 'Software Engineer',
         'work_location': work_locations[Math.floor(Math.random() * work_locations.length)],
         'salary': 1.50,
         'manager': i !== e_size ? i < ten ? `employee #${e_size}` : `employee #${i % 10}` : '',
-        'direct_reports': i < ten ? getDirectReports(i * ten, (i + 1) * ten) : i === e_size ? getDirectReports(0, ten) :[],
+        'direct_reports': i < ten ? getDirectReports(i * ten, (i + 1) * ten) : i === e_size ? getDirectReports(0, ten) : [],
         'division': divisions[Math.floor(Math.random() * divisions.length)],
         'department': departments[Math.floor(Math.random() * departments.length)] //Make division and department correlated, combine arrays into 2D
       }
@@ -45,7 +46,8 @@ const applyDBData = () => {
     dbPool.collection('credentials').insertOne(
       {
         'username': `e${i}`,
-        'password': 'password'
+        'password': 'password',
+        'id': i
       }
     )
   }
@@ -54,7 +56,7 @@ const applyDBData = () => {
 const getDirectReports = (start, end) => {
   let reports = []
 
-  for (let i = start; i < end; i++){
+  for (let i = start; i < end; i++) {
     reports.push(`employee #${i}`)
   }
 
@@ -65,13 +67,26 @@ module.exports.login = async (username, password, callback) => {
   callback(
     await dbPool
       .collection("credentials")
-      .countDocuments({ 'username': username, 'password': password }) === 1 ? 200 : 401
+      .findOne({ 'username': username, 'password': password })
   )
 }
 
 //Passing in the user calling's employee id/name/identification information to find way to redact salary information
-module.exports.filterEmployees = (filter, callback) =>
-  (dbPool.collection('employees')).find(filter).toArray((err, data) => callback(data))
+module.exports.filterEmployees = (filter, callback) => {
+  const callerId = filter.caller_id;
+  delete filter.caller_id;
+
+  (dbPool.collection('employees')).find(filter).toArray((err, data) => {
+    dbPool.collection('employees').findOne({ "id": callerId }).then(manager => {
+      callback(data.map(employee => {
+        if (!manager || (employee.manager !== manager.name && employee.name !== manager.name)) delete employee['salary']
+
+        return employee
+      }))
+    })
+  })
+
+}
 
 module.exports.getAll = (resource, callback) => {
 
