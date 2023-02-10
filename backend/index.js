@@ -13,6 +13,15 @@ app.post("/filterEmployees", (req, res) => {
     if (!Object.keys(body).includes('caller_id') || typeof body['caller_id'] !== "string")
         res.sendStatus(404)
 
+    if (Object.keys(body).includes('work_location') && body['work_location'] === 'All Work Locations')
+        delete body['work_location']
+
+    if (Object.keys(body).includes('division') && body['division'] === 'All Divisions')
+        delete body['division']
+
+    if (Object.keys(body).includes('department') && body['department'] === 'All Departments')
+        delete body['department']
+
     Object.keys(body).forEach(
         (key) => {
             return (validKeys.includes(key) && typeof body[key] === "string") || delete body[key]
@@ -24,8 +33,8 @@ app.post("/filterEmployees", (req, res) => {
 
 app.post("/login", (req, res) => {
     let credentials = req.body
-    dao.login(credentials.username, credentials.password, (data) => { 
-        data ? res.send(`${data.id}`) : res.sendStatus(401) 
+    dao.login(credentials.username, credentials.password, (data) => {
+        data ? res.send(`${data.id}`) : res.sendStatus(401)
     })
 })
 
