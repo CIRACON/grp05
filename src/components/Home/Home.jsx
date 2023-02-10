@@ -130,10 +130,10 @@ export const Home = () => {
                     <div className='p-6 flex flex-col justify-start'>
                       <h5 className='text-gray-900 text-xl font-medium mb-2 mt-2 '>{employee.name}</h5>
                       <p className='text-gray-700 text-base mb-4'>Phone Number: {employee.phone_number}</p>
-                      <p className='text-gray-700 text-base mb-4'>Job Role: {employee.job_role}</p>
+                      {/* <p className='text-gray-700 text-base mb-4'>Job Role: {employee.job_role}</p> */}
                       <p className='text-gray-700 text-base mb-4'>Work Location: {employee.work_location}</p>
-                      <p className='text-gray-700 text-base mb-4'>Division: {employee.division}</p>
-                      <p className='text-gray-700 text-base mb-4'>Department: {employee.department}</p>
+                      {/* <p className='text-gray-700 text-base mb-4'>Division: {employee.division}</p> */}
+                      {/* <p className='text-gray-700 text-base mb-4'>Department: {employee.department}</p> */}
                     </div>
                   </div>
                 </div>
