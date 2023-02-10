@@ -24,7 +24,7 @@ const applyDBData = () => {
     //Do nothing, collections do not exist
   }
 
-  const e_size = 1000
+  const e_size = 100
   const ten = e_size / 10
 
   for (let i = 0; i <= e_size; i++) {
@@ -83,6 +83,8 @@ module.exports.filterEmployees = (filter, callback) => {
           !caller ||
           (employee.manager !== caller.name && employee.name !== caller.name && caller.department !== 'HR')
         ) delete employee['salary']
+
+        delete employee['_id']
 
         return employee
       }))

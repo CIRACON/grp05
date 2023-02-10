@@ -1,17 +1,15 @@
 import React from 'react'
+import { useLocation } from 'react-router-dom';
+import { EmployeeProfileHeader } from './EmployeeProfileHeader';
+import { EmployeeProfileBody } from './EmployeeProfileBody';
 
 export const EmployeeProfile = () => {
+    const { state } = useLocation()
 
     return (
-
         <>
-            <div>EmployeeProfile</div>
-            <p>Name:</p>
-            <p>Phone Number:</p>
-            <p>Job Role:</p>
-            <p>Work Location:</p>
-            <p>Salary:</p>
+            <EmployeeProfileHeader />
+            <EmployeeProfileBody employee={state} />
         </>
-
     )
 }
