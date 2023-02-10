@@ -6,11 +6,7 @@ export const Header = () => {
   return (
     <>
       <div className="flex h-24 bg-[#f50101]">
-        <div className="flex-none w-1/12 border-solid border border-black border-l-0 grid place-items-center">
-          Search Bar
-        </div>
-
-        <div className="shrink w-10/12 border-solid border border-black border-l-0 border-r-0 text-2xl grid place-items-center">
+        <div className="shrink w-11/12 border-solid border border-black border-l-0 border-r-0 text-2xl grid place-items-center">
           Searchable Enterprise Directory
         </div>
 

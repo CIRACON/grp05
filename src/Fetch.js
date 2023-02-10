@@ -29,7 +29,7 @@ export async function isAuthenticated(username, password) {
     }
 }
 
-export async function getFilteredEmployees(name, phone_number, job_role, work_location, division, department) {
+export async function getFilteredEmployees(name, id, phone_number, job_role, work_location, division, department) {
 
     let url = `http://localhost:4000/filterEmployees`
 
@@ -39,6 +39,8 @@ export async function getFilteredEmployees(name, phone_number, job_role, work_lo
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
+            caller_id: cookies.get('id'),
+            id: id ? id : null,
             name: name ? name : null,
             phone_number: phone_number ? phone_number : null,
             job_role: job_role ? job_role : null,
@@ -49,7 +51,6 @@ export async function getFilteredEmployees(name, phone_number, job_role, work_lo
     }
 
     try {
-        console.log(fetchOptions.body)
         return await fetch(url, fetchOptions).then(res => res.json())
     } catch (ex) {
         console.error(`Error fetching employees: ${ex.message}`)
@@ -64,7 +65,6 @@ export async function getSearchResource(resource) {
     let url = `http://localhost:4000/resource/search/getAll/${resource}`
 
     try {
-    
         return await fetch(url).then(res => res.json())
     } catch (ex) {
         console.error(`Error fetching employees: ${ex.message}`)

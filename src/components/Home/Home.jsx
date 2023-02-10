@@ -12,6 +12,7 @@ export const Home = () => {
 
   // State Variables for Homepage - This is what we'll send to filter the directory
   const [name, setName] = useState("")
+  const [id, setId] = useState("")
   const [phone_number, setPhone] = useState("")
   const [job_role, setJobRole] = useState("")
   const [work_location, setWorkLocation] = useState("")
@@ -24,7 +25,7 @@ export const Home = () => {
   // const handleSubmit = () => getFilteredEmployees(name, phone_number, job_role, work_location, division, department).then(res => console.log(res))
 
   const handleSubmit = () =>
-    getFilteredEmployees(name, phone_number, job_role, work_location, division, department)
+    getFilteredEmployees(name, id, phone_number, job_role, work_location, division, department)
       .then(res => {
         setEmployees(res)
         console.log('response:', res)
@@ -52,6 +53,12 @@ export const Home = () => {
               label="Name"
               variant="standard"
               onChange={event => setName(event.target.value)}
+            />
+            <TextField
+              id="standard-basc"
+              label="Employee Id"
+              variant="standard"
+              onChange={event => setId(event.target.value)}
             />
             <TextField
               id="standard-basc"

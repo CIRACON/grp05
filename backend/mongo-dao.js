@@ -24,7 +24,7 @@ const applyDBData = () => {
     //Do nothing, collections do not exist
   }
 
-  const e_size = 100
+  const e_size = 1000
   const ten = e_size / 10
 
   for (let i = 0; i <= e_size; i++) {
@@ -77,9 +77,12 @@ module.exports.filterEmployees = (filter, callback) => {
   delete filter.caller_id;
 
   (dbPool.collection('employees')).find(filter).toArray((err, data) => {
-    dbPool.collection('employees').findOne({ "id": callerId }).then(manager => {
+    dbPool.collection('employees').findOne({ "id": callerId }).then(caller => {
       callback(data.map(employee => {
-        if (!manager || (employee.manager !== manager.name && employee.name !== manager.name)) delete employee['salary']
+        if (
+          !caller ||
+          (employee.manager !== caller.name && employee.name !== caller.name && caller.department !== 'HR')
+        ) delete employee['salary']
 
         return employee
       }))
@@ -102,6 +105,7 @@ module.exports.getAll = (resource, callback) => {
       break
     default:
       callback([])
+      break
   }
 
 }
