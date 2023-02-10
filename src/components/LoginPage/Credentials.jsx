@@ -14,7 +14,7 @@ export const Credentials = () => {
 
     const handleCredentials = () => {
         isAuthenticated(username, password).then(res => {
-            res ? navigate("/Home") : console.log("Authentication Invalid") //Change to user error message
+            res ? navigate("/home") : console.log("Authentication Invalid") //Change to user error message
         })
     }
 

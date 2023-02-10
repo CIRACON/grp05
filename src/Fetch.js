@@ -29,7 +29,7 @@ export async function isAuthenticated(username, password) {
     }
 }
 
-export async function getFilteredEmployees(name, id, phone_number, job_role, work_location, division, department) {
+export async function getFilteredEmployees(name = null, id = null, phone_number = null, job_role = null, work_location = null, division = null, department = null) {
 
     let url = `http://localhost:4000/filterEmployees`
 

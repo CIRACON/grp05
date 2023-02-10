@@ -24,10 +24,14 @@ const applyDBData = () => {
     //Do nothing, collections do not exist
   }
 
-  const e_size = 1000
+  const e_size = 100
   const ten = e_size / 10
 
+  let division = ""
+
   for (let i = 0; i <= e_size; i++) {
+    divisionNum = Math.floor(Math.random() * divisions.length)
+
     dbPool.collection("employees").insertOne(
       {
         'id': `${i}`,
@@ -38,8 +42,8 @@ const applyDBData = () => {
         'salary': 1.50,
         'manager': i !== e_size ? i < ten ? `employee #${e_size}` : `employee #${i % 10}` : '',
         'direct_reports': i < ten ? getDirectReports(i * ten, (i + 1) * ten) : i === e_size ? getDirectReports(0, ten) : [],
-        'division': divisions[Math.floor(Math.random() * divisions.length)],
-        'department': departments[Math.floor(Math.random() * departments.length)] //Make division and department correlated, combine arrays into 2D
+        'division': divisions[divisionNum],
+        'department': departments[divisionNum][Math.floor(Math.random() * departments[divisionNum].length)]
       }
     )
 
@@ -83,6 +87,8 @@ module.exports.filterEmployees = (filter, callback) => {
           !caller ||
           (employee.manager !== caller.name && employee.name !== caller.name && caller.department !== 'HR')
         ) delete employee['salary']
+
+        delete employee['_id']
 
         return employee
       }))
