@@ -107,7 +107,13 @@ module.exports.getAll = (resource, callback) => {
       callback(divisions)
       break
     case 'departments':
-      callback(departments)
+      let deptObj = {}
+
+      divisions.forEach(division => {
+        deptObj[division] = departments[divisions.indexOf(division)]
+      })
+
+      callback(deptObj)
       break
     default:
       callback([])

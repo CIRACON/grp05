@@ -3,7 +3,7 @@ import { React, useEffect, useState } from 'react'
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
-import Select, { SelectChangeEvent } from '@mui/material/Select';
+import Select from '@mui/material/Select';
 import Button from '@mui/material/Button';
 import { getSearchResource } from '../../Fetch';
 import { getFilteredEmployees } from '../../Fetch';
@@ -13,14 +13,6 @@ import { Header } from '../Header/Header';
 
 export const Home = () => {
   const navigate = useNavigate()
-
-  useEffect(() => {
-    getSearchResource('divisions')
-      .then(res => {
-        setCascadingDivision(res)
-        console.log('response:', res)
-      })
-  }, [])
 
   // State Variables for Homepage - This is what we'll send to filter the directory
   const [name, setName] = useState("")
@@ -34,9 +26,23 @@ export const Home = () => {
 
   // Cascading drop downs - department is dependent on division
   const [cascadingDivision, setCascadingDivision] = useState([])
-  const [cascadingDepartment, setCascadingDepartment] = useState([])
+  const [cascadingDepartment, setCascadingDepartment] = useState({})
 
-
+  // instead, load cascadingVariables on page load, THEN show departments based on division selected.
+  useEffect(() => {
+    getSearchResource('divisions')
+      .then(res => {
+        setCascadingDivision(res)
+        console.log('response:', res)
+      })
+      .then(
+        getSearchResource('departments')
+          .then(res => {
+            setCascadingDepartment(res);
+            console.log(`response for departments: ${res}`)
+          })
+      )
+  }, [])
 
   // Functions
   const handleSubmit = () =>
@@ -45,25 +51,16 @@ export const Home = () => {
         setEmployees(res)
       })
 
-  const handleDepartment = (event) => {
-    console.log('New division selected. Now sending said division to api endpoint: ', event)
-    getSearchResource('departments')
-      .then(res => {
-        setCascadingDepartment(res);
-        console.log(`response for departments in ${event}: ${res}`)
-        console.log(cascadingDepartment);
-      })
-  }
-  const handleEmployeePage = (employee) => navigate('/employeeProfile', {state: employee})
+  const handleEmployeePage = (employee) => navigate('/employeeProfile', { state: employee })
 
   return (
     <>
-
       <Header />
       {/* Search inputs */}
       <div className='flex'>
         <div className='w-1/5 shadow-xl m-[14px]'>
           <div className='w-40 grid gap-4 grid-cols-1 grid-rows-5 ml-[45px]'>
+
 
             <TextField
               id="standard-basc"
@@ -93,11 +90,12 @@ export const Home = () => {
               variant="standard"
               onChange={event => setWorkLocation(event.target.value)} />
 
+
             <FormControl sx={{ m: 1, minWidth: 150 }}>
               <InputLabel>Division</InputLabel>
               <Select
                 label="Division"
-                onChange={event => { setDivision(event.target.value); handleDepartment(event.target.value) }}
+                onChange={event => { setDivision(event.target.value) }}
               >
                 <MenuItem value="All Divisions">All Divisions</MenuItem>
                 {cascadingDivision.map((divisionItem) =>
@@ -105,16 +103,19 @@ export const Home = () => {
                 )}
               </Select>
             </FormControl>
-
             <FormControl sx={{ m: 1, minWidth: 150 }}>
-              <InputLabel id="demo-simple-select-label">Department</InputLabel>
+              <InputLabel>Department</InputLabel>
               <Select
-                labelId="demo-simple-select-label"
-                id="demo-simple-select"
                 label="Department"
-              // onChange={handleChange}
+              // onChange={event => setDepartment(event.target.value)}
               >
-                <MenuItem onChange={event => setDepartment(event.target.value)}>Department 1</MenuItem>
+                <MenuItem value="All Departments">All Department</MenuItem>
+                {() => {
+                  if (Object.keys(cascadingDepartment).includes(division))
+                    return cascadingDepartment[division].map((departmentItem) =>
+                      <MenuItem value={departmentItem}>{departmentItem}</MenuItem>)
+                }
+                }
               </Select>
             </FormControl>
 
