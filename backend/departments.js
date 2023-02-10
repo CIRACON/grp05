@@ -1,4 +1,5 @@
 const departments = [
+    ["Bond Specialty Insurance", [
     "BSI Actuary",
     "BSI BI&A",
     "BSI CEO and Direct Reports",
@@ -70,8 +71,9 @@ const departments = [
     "BSI TCI Global CMSUR",
     "BSI TCI Global CS",
     "BSI Training",
-    "Private Non-Profit CUF",
-    "Ag Central Denver",
+    "Private Non-Profit CUF"]],
+
+    ["Business Insurance", ["Ag Central Denver",
     "Ag East",
     "Ag West Fresno",
     "Ag West Northwest",
@@ -455,8 +457,9 @@ const departments = [
     "Tech Upper Midwest Sales",
     "Transporation Western Region",
     "Transportation Eastern Region",
-    "Transportation UW and Admin",
-    "Albany Syracuse Cl",
+    "Transportation UW and Admin"]],
+
+    ["Corporate Claim", ["Albany Syracuse Cl",
     "Albany Syracuse WC",
     "Albuquerque WC",
     "Alpharetta Cl",
@@ -981,8 +984,9 @@ const departments = [
     "Wc Large Loss",
     "WC Product Development Group",
     "Wcomp",
-    "White Plains Liability Cl",
-    "1099/Escheatment",
+    "White Plains Liability Cl"]],
+
+    ["Corporate Staff", ["1099/Escheatment",
     "Accounting Operations",
     "Accounting Policy",
     "Admin Services Admin",
@@ -1087,8 +1091,9 @@ const departments = [
     "Staff Hr Support",
     "Staffing Admin",
     "Statutory Reporting",
-    "Travelers Innovation Center",
-    "ACT ACTUARIAL CAD_D",
+    "Travelers Innovation Center"]],
+    
+    ["International", ["ACT ACTUARIAL CAD_D",
     "ACT PRICING CAD",
     "ACT R&D CAD",
     "Actuarial Europe",
@@ -1266,8 +1271,9 @@ const departments = [
     "UW SURETY HOME WARRANTY",
     "UW SURETY TECH SERVICES",
     "UW SURETY WEST",
-    "Wording and Prod Devel",
-    "3PD and COE",
+    "Wording and Prod Devel"]],
+
+    ["Personal Insurance", ["3PD and COE",
     "Accounting & Controls",
     "Actuarial Reserving",
     "Admin_IM",
@@ -1358,8 +1364,9 @@ const departments = [
     "TRV Marketplace",
     "UPNY",
     "UX",
-    "Workforce_Management",
-    "RC Analytical Lab",
+    "Workforce_Management"]],
+
+    ["Risk Control", ["RC Analytical Lab",
     "RC Boiler Admin & Specialist",
     "RC Boiler East",
     "RC Boiler West",
@@ -1395,8 +1402,9 @@ const departments = [
     "RC Property West",
     "RC Sr. Management",
     "RC Training Groups",
-    "RC Transportation",
-    "3rd Party",
+    "RC Transportation"]],
+
+    ["Technology and Operations", ["3rd Party",
     "AA Engineering Labor",
     "AA Platform Support",
     "Access ID Profile & Preference",
@@ -1646,7 +1654,7 @@ const departments = [
     "Transaction Processing",
     "Treasury, Investments, ERM",
     "Voice & Contact Center Tech",
-    "Voice Network"
+    "Voice Network"]]
 ]
 
 module.exports = {departments}
