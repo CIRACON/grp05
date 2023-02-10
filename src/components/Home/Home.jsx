@@ -11,6 +11,14 @@ import { getFilteredEmployees } from '../../Fetch';
 import { Header } from '../Header/Header';
 export const Home = () => {
 
+  useEffect(() => {
+    getSearchResource('divisions')
+      .then(res => {
+        setCascadingDivision(res)
+        console.log('response:', res)
+      })
+  }, [])
+
   // State Variables for Homepage - This is what we'll send to filter the directory
   const [name, setName] = useState("")
   const [id, setId] = useState("")
@@ -28,7 +36,6 @@ export const Home = () => {
 
 
   // Functions
-
   const handleSubmit = () =>
     getFilteredEmployees(name, id, phone_number, job_role, work_location, division, department)
       .then(res => {
@@ -36,16 +43,15 @@ export const Home = () => {
         console.log('response:', res)
       })
 
-
-  useEffect(() => {
-    getSearchResource('divisions')
+  const handleDepartment = (event) => {
+    console.log('New division selected. Now sending said division to api endpoint: ', event)
+    getSearchResource(event)
       .then(res => {
-        setCascadingDivision(res)
-        console.log('response:', res)
+        setCascadingDepartment(res);
+        console.log(`response for departments in ${event}: ${res}`)
+        console.log(cascadingDepartment);
       })
-  }, [])
-
-
+  }
 
   return (
     <>
@@ -88,7 +94,7 @@ export const Home = () => {
               <InputLabel>Division</InputLabel>
               <Select
                 label="Division"
-                onChange={event => setDivision(event.target.value)}
+                onChange={event => { setDivision(event.target.value); handleDepartment(event.target.value) }}
               >
                 <MenuItem value="All Divisions">All Divisions</MenuItem>
                 {cascadingDivision.map((divisionItem) =>
@@ -106,10 +112,9 @@ export const Home = () => {
               // onChange={handleChange}
               >
                 <MenuItem onChange={event => setDepartment(event.target.value)}>Department 1</MenuItem>
-                <MenuItem onChange={event => setDepartment(event.target.value)}>Department 2</MenuItem>
-                <MenuItem onChange={event => setDepartment(event.target.value)}>Department 3</MenuItem>
               </Select>
             </FormControl>
+
             <Button variant="contained" onClick={handleSubmit}>Submit</Button>
           </div>
         </div>
