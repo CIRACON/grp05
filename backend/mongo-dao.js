@@ -43,7 +43,7 @@ const applyDBData = () => {
         'manager': i !== e_size ? i < ten ? `employee #${e_size}` : `employee #${i % 10}` : '',
         'direct_reports': i < ten ? getDirectReports(i * ten, (i + 1) * ten) : i === e_size ? getDirectReports(0, ten) : [],
         'division': divisions[divisionNum],
-        'department': departments[divisionNum][1][Math.floor(Math.random() * departments[divisionNum][1].length)]
+        'department': departments[divisionNum][Math.floor(Math.random() * departments[divisionNum].length)]
       }
     )
 
