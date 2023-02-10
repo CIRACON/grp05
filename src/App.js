@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import '@fontsource/roboto'
 import './App.css';
 import React from 'react';
