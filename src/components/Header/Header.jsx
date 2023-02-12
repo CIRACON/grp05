@@ -26,7 +26,7 @@ export const Header = () => {
           className="flex-none w-1/12 border-solid border border-black text-2xl grid place-items-center"
           onClick={handleBack}
         >
-          Back
+          Logout
         </div>
         <div className="shrink w-10/12 border-solid border border-black border-l-0 border-r-0 text-2xl grid place-items-center">
           Searchable Enterprise Directory
