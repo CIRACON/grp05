@@ -78,7 +78,7 @@ export const Home = () => {
       {/* Search inputs */}
       <div className='flex'>
         <div className='w-1/5 shadow-xl mt-[10px]'>
-          <div className='w-40 grid grid-cols-1 grid-rows-5 ml-[35px]'>
+          <div className='w-42 grid grid-cols-1 grid-rows-5 ml-[10px] mr-[10px]'>
 
             <TextField
               id="standard-basc"
