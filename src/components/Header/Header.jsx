@@ -1,7 +1,8 @@
 import React from 'react'
 import { useNavigate } from "react-router-dom";
-import default_profile_photo from "./default-profile-image.png"
-import Travelers_logo from "./Travelers-logo.png"
+import default_profile_photo from "./default-profile-image.png";
+import profile_svg from "./account.svg";
+import Travelers_logo from "./Travelers-logo.png";
 import Cookies from 'universal-cookie';
 import { getFilteredEmployees } from '../../Fetch';
 
@@ -49,15 +50,11 @@ export const Header = () => {
         <div className="shrink w-6/12 text-2xl grid place-items-center text-white font-bold text-[25px]">
           Searchable Enterprise Directory
         </div>
-
-        <div className="" onClick={handleProfilePage}>
-          {/* <img className="" src={default_profile_photo} alt="Profile" /> */}
-        </div>
         <div
-          className="flex-none w-1/12 grid place-items-center justify-end"
+          className="flex-none w-1/12 inset-y-0 right-0 grid place-items-center ml-[150px]"
           onClick={handleProfilePage}
         >
-          <img className="object-fill w-10/12 h-10/12" src={default_profile_photo} alt="Profile" />
+          <img className="object-fill w-10/12 h-10/12 stroke-[#c40101]" src={profile_svg} alt="Profile" />
         </div>
       </div>
     </>
