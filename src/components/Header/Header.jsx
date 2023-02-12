@@ -54,7 +54,7 @@ export const Header = () => {
           className="flex-none w-1/12 inset-y-0 right-0 grid place-items-center ml-[150px]"
           onClick={handleProfilePage}
         >
-          <img className="object-fill w-10/12 h-10/12 stroke-[#c40101]" src={profile_svg} alt="Profile" />
+          <img className="object-fill w-10/12 h-10/12 stroke-blue-400" src={profile_svg} alt="Profile" />
         </div>
       </div>
     </>
