@@ -15,7 +15,7 @@ export const EmployeeProfileHeader = () => {
                     Back
                 </div>
                 <div className="shrink w-11/12 border-solid border border-black border-l-0 grid place-items-center">
-                    EmployeeProfile
+                    Employee Profile
                 </div>
             </div>
         </>

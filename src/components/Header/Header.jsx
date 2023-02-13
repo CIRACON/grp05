@@ -35,7 +35,7 @@ export const Header = () => {
           className="flex-none w-1/12 inset-y-0 right-0 grid place-items-center ml-[200px]"
           onClick={handleProfilePage}
         >
-          <UserCircleIcon className="object-fill w-8/12 h-8/12 text-white hover:text-[#c40101]" alt="Profile"/>
+          <UserCircleIcon className="object-fill w-8/12 h-8/12 text-white hover:text-[#c40101]" alt="Profile" />
         </div>
       </div>
     </>
