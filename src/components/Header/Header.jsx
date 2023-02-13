@@ -22,7 +22,7 @@ export const Header = () => {
 
   return (
     <>
-      <div className="flex h-24 bg-[#8D99AE]">
+      <div className="flex h-24 bg-[#8D99AE] sticky top-0">
 
         <div className="group font-sans text-[40px] text-white italic hover:text-[#c40101] grid place-items-center antialiased ml-6 " onClick={handleBack}> TRAVELERS </div>
 
