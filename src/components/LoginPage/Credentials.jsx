@@ -2,9 +2,7 @@ import { TextField, } from "@mui/material";
 import Button from '@mui/material/Button';
 import { React, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import InputAdornment from '@mui/material/InputAdornment';
 import { isAuthenticated } from "../../Fetch";
-import login_gradient from "./login-gradient.jpg"
 import login_gradient2 from "./Illustration3.png"
 
 export const Credentials = () => {
