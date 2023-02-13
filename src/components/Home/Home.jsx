@@ -152,9 +152,9 @@ export const Home = () => {
           {/* THIS WILL NEED TO MAP THROUGH EACH FILTERED PERSON CREATE GRID. */}
           {employees.map(employee => {
             return (
-              <div className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700" onClick={() => handleEmployeePage(employee)}>
+              <div className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow hover:bg-blue-100" onClick={() => handleEmployeePage(employee)}>
               <div className="flex flex-col items-center pb-10">
-                <UserCircleIcon className="w-24 h-24 mb-3 rounded-full shadow-lg text-[#8D99AE]" alt="Profile" />
+                <UserCircleIcon className="w-24 h-24 mb-3  mt-[5px] rounded-full shadow-lg text-[#8D99AE]" alt="Profile" />
                 <h5 className="mb-1 text-xl font-medium text-gray-900 dark:text-white">{employee.name}</h5>
                 <span className="text-sm text-gray-500 dark:text-gray-400">{employee.job_role}</span>
                 <span className="text-sm text-gray-500 dark:text-gray-400">{employee.work_location}</span>
