@@ -26,7 +26,7 @@ export const Header = () => {
 
         <div className="group font-sans text-[40px] text-white italic hover:text-[#c40101] grid place-items-center antialiased ml-6 " onClick={handleBack}> TRAVELERS </div>
 
-        <img className='group-hover:stroke-[#c40101]' src={Travelers_logo}></img>
+        <img className='group-hover:stroke-[#c40101]' src={Travelers_logo} alt="Logo"></img>
 
         <div className="shrink w-6/12 text-2xl grid place-items-center text-white font-bold text-[25px]">
           Searchable Enterprise Directory

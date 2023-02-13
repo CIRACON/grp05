@@ -1,4 +1,3 @@
-import { ArrowLeftIcon } from '@heroicons/react/24/solid';
 import React from 'react'
 import { useNavigate } from "react-router-dom";
 import Travelers_logo from "../Header/Travelers-logo.png"
@@ -15,7 +14,7 @@ export const EmployeeProfileHeader = () => {
                     onClick={handleBack}
                 >
                     
-                    <img className='group-hover:stroke-[#c40101] ml-[15px]' src={Travelers_logo}></img>
+                    <img className='group-hover:stroke-[#c40101] ml-[15px]' src={Travelers_logo} alt="Logo"></img>
               </div>
                 <div className="shrink w-6/12 text-2xl grid place-items-center text-white font-bold text-[25px] ml-[225px]">
                     Employee Profile
