@@ -1,5 +1,7 @@
+import { ArrowLeftIcon } from '@heroicons/react/24/solid';
 import React from 'react'
 import { useNavigate } from "react-router-dom";
+import Travelers_logo from "../Header/Travelers-logo.png"
 
 export const EmployeeProfileHeader = () => {
     const navigate = useNavigate()
@@ -7,14 +9,15 @@ export const EmployeeProfileHeader = () => {
 
     return (
         <>
-            <div className="flex h-24 bg-[#f50101] text-2xl">
+            <div className="flex h-24 bg-[#8D99AE] text-2xl">
                 <div
-                    className="flex-none w-1/12 border-solid border border-black grid place-items-center"
+                    className="flex-none w-24 h-24 grid place-items-center"
                     onClick={handleBack}
                 >
-                    Back
-                </div>
-                <div className="shrink w-11/12 border-solid border border-black border-l-0 grid place-items-center">
+                    
+                    <img className='group-hover:stroke-[#c40101] ml-[15px]' src={Travelers_logo}></img>
+              </div>
+                <div className="shrink w-6/12 text-2xl grid place-items-center text-white font-bold text-[25px] ml-[225px]">
                     Employee Profile
                 </div>
             </div>

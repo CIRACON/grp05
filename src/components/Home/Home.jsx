@@ -142,7 +142,6 @@ export const Home = () => {
                 {handleCascadingDepartments()}
               </Select>
             </FormControl>
-
             <Button variant="contained" className="" onClick={handleSubmit}>Submit</Button>
           </div>
         </div>

@@ -28,12 +28,13 @@ export const Credentials = () => {
                     <img className="object-fill h-full w-full" src={login_gradient2} alt="gradient" />
                 </div>
 
-                <div className="h-screen w-2/5 bg-white grid place-items-center">
-                    <div className="h-1/2 w-full grid place-items-center">
+                <div className="h-screen w-2/5 grid place-items-center">
+                    <div className="h-1/2 w-full grid place-items-center p-4 max-w-sm sm:p-6  border border-gray-200 rounded-lg">
                     
-                        <div className="font-sans  text-lg text-left font-bold">
+                        {/* <div className="font-sans  text-lg text-left font-bold ">
                             Sign in
-                        </div>
+                        </div> */}
+                        <h4 className="text-xl font-medium text-gray-900 mr-[145px]">Sign in</h4>
 
                         <div>
                             <TextField
@@ -61,7 +62,7 @@ export const Credentials = () => {
                                 variant="contained" onClick={handleCredentials}
                                 sx={{width: 210}}
                             >
-                                Sign in
+                                Continue
                             </Button>
 
                         </div>
