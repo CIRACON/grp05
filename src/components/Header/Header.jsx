@@ -1,10 +1,9 @@
 import React from 'react'
 import { useNavigate } from "react-router-dom";
-import default_profile_photo from "./default-profile-image.png";
-import profile_svg from "./account.svg";
 import Travelers_logo from "./Travelers-logo.png";
 import Cookies from 'universal-cookie';
 import { getFilteredEmployees } from '../../Fetch';
+import { UserCircleIcon } from '@heroicons/react/24/solid'
 
 const cookies = new Cookies()
 
@@ -23,27 +22,9 @@ export const Header = () => {
 
   return (
     <>
-      {/* <div className="flex h-24 bg-[#f50101]">
-        <div
-          className="flex-none w-1/12 border-solid border border-black text-2xl grid place-items-center"
-          onClick={handleBack}
-        >
-          Back
-        </div>
-        <div className="shrink w-10/12 border-solid border border-black border-l-0 border-r-0 text-2xl grid place-items-center">
-          Searchable Enterprise Directory
-        </div>
-
-        <div
-          className="flex-none w-1/12 border-solid border border-black grid place-items-center"
-          onClick={handleProfilePage}
-        >
-          <img className="object-fill w-10/12 h-10/12" src={default_profile_photo} alt="Profile" />
-        </div>
-      </div> */}
       <div className="flex h-24 bg-[#8D99AE]">
 
-        <div className="group font-sans text-[50px] text-white italic hover:text-[#c40101] grid place-items-center antialiased ml-6 " onClick={handleBack}> TRAVELERS </div>
+        <div className="group font-sans text-[40px] text-white italic hover:text-[#c40101] grid place-items-center antialiased ml-6 " onClick={handleBack}> TRAVELERS </div>
 
         <img className='group-hover:stroke-[#c40101]' src={Travelers_logo}></img>
 
@@ -51,12 +32,14 @@ export const Header = () => {
           Searchable Enterprise Directory
         </div>
         <div
-          className="flex-none w-1/12 inset-y-0 right-0 grid place-items-center ml-[150px]"
+          className="flex-none w-1/12 inset-y-0 right-0 grid place-items-center ml-[200px]"
           onClick={handleProfilePage}
         >
-          <img className="object-fill w-10/12 h-10/12 stroke-blue-400" src={profile_svg} alt="Profile" />
+          <UserCircleIcon className="object-fill w-8/12 h-8/12 text-white hover:text-[#c40101]" alt="Profile"/>
         </div>
       </div>
     </>
   )
 }
+
+
