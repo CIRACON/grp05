@@ -58,7 +58,7 @@ export const Home = () => {
       <Header />
       {/* Search inputs */}
       <div className='flex'>
-        <div className='w-1/5 shadow-xl m-[14px]'>
+        <div className='w-1/5 m-[14px] '>
           <div className='w-40 grid gap-4 grid-cols-1 grid-rows-5 ml-[45px]'>
 
 
@@ -119,7 +119,7 @@ export const Home = () => {
               </Select>
             </FormControl>
 
-            <Button variant="contained" onClick={handleSubmit}>Submit</Button>
+            <Button variant="contained" className="" onClick={handleSubmit}>Submit</Button>
           </div>
         </div>
         {/* <TextField id="standard-basc" label="Department" variant="standard" /> */}
